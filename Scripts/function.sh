@@ -140,6 +140,10 @@ function generate_config() {
   if [[ "$WRT_CONFIG" == *"NOWIFI"* ]]; then
     remove_wifi $target
   fi
+  #ipk仓库
+  if [[ "${CI_PROJECT_NAME,,}" == *"ipk"* ]]; then
+    echo "CONFIG_USE_APK=n" >> $config_file
+  fi
 
   set_nss_driver $config_file
   #增加ebpf
