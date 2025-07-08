@@ -140,6 +140,9 @@ function generate_config() {
   if [[ "$WRT_CONFIG" == *"NOWIFI"* ]]; then
     remove_wifi $target
   fi
+  printenv
+  echo "ENV--------"
+  env
   echo "CI_PROJECT_NAME--------"
   echo $CI_PROJECT_NAME
   #ipk仓库
