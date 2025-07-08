@@ -140,13 +140,11 @@ function generate_config() {
   if [[ "$WRT_CONFIG" == *"NOWIFI"* ]]; then
     remove_wifi $target
   fi
-  printenv
-  echo "ENV--------"
-  env
-  echo "CI_PROJECT_NAME--------"
-  echo $CI_PROJECT_NAME
+
+  echo "GITHUB_REPOSITORY--------"
+  echo $GITHUB_REPOSITORY
   #ipk仓库
-  if [[ "${CI_PROJECT_NAME,,}" == *"ipk"* ]]; then
+  if [[ "${GITHUB_REPOSITORY,,}" == *"ipk"* ]]; then
     echo "CONFIG_USE_APK=n" >> $config_file
   fi
 
