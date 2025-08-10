@@ -8,11 +8,13 @@ PKG_NAME:=dae
 PKG_VERSION:=$(shell date "+%Y.%m.%d")
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-1.0.0.zip
-PKG_SOURCE_URL:=https://github.com/daeuniverse/dae/releases/download/v1.0.0/dae-full-src.zip?
-PKG_HASH:=d933b93fc30cb4e9941cbb1be23557bd6caa2a33af212883505fec435d06fc13
-
-PKG_SOURCE_VERSION:=$(shell git ls-remote $(PKG_SOURCE_URL) HEAD | cut -c1-7)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/daeuniverse/dae.git
+PKG_SOURCE_URL:=https://github.com/LostAttractor/dae.git
+PKG_SOURCE_PROTO:=git
+#PKG_SOURCE_VERSION:=$(shell git ls-remote $(PKG_SOURCE_URL) HEAD | cut -c1-7)
+PKG_SOURCE_VERSION:=$(shell git ls-remote $(PKG_SOURCE_URL) next | cut -c1-7)
+PKG_MIRROR_HASH:=
 
 PKG_LICENSE:=AGPL-3.0-only
 PKG_LICENSE_FILE:=LICENSE
@@ -72,10 +74,9 @@ endef
 
 define Build/Prepare
 	( \
-		rm -rf $(PKG_BUILD_DIR) && git clone https://github.com/daeuniverse/dae $(PKG_BUILD_DIR) && git -C $(PKG_BUILD_DIR) checkout master ; \
+		rm -rf $(PKG_BUILD_DIR) && git clone $(PKG_SOURCE_URL) $(PKG_BUILD_DIR) && git -C $(PKG_BUILD_DIR) checkout next ; \
 		pushd $(PKG_BUILD_DIR) ; \
 		git submodule update --init ; \
-		wget -qO - https://github.com/davidtall/dae/commit/da9a4b9.patch | patch -p1 ; \
 		go mod tidy ; \
 		popd ; \
 	)
