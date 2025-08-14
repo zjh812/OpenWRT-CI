@@ -25,6 +25,7 @@ CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-gecoosac=y
 CONFIG_PACKAGE_luci-app-pushbot=y
 #CONFIG_PACKAGE_luci-app-mwan3=y
+CONFIG_PACKAGE_luci-app-lucky=y
 #删除插件
 CONFIG_PACKAGE_luci-app-wol=n
 #参数调整
@@ -124,4 +125,5 @@ CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_default-settings=y
 CONFIG_PACKAGE_default-settings-chn=y
 CONFIG_PACKAGE_bash=y
+
 
