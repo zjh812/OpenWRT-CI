@@ -71,6 +71,7 @@ UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-ap
 
 UPDATE_PACKAGE "lucky" "gdy666/luci-app-lucky" "main"
 UPDATE_PACKAGE "openlist" "OpenListTeam/OpenList" "main" "" "luci-app-openlist openlist"
+UPDATE_PACKAGE "istore" "linkease/istore" "main" "" "luci-app-store"
 UPDATE_PACKAGE "luci-app-daed" "QiuSimons/luci-app-daed" "master"
 UPDATE_PACKAGE "luci-app-pushbot" "zzsj0928/luci-app-pushbot" "master"
 #更新软件包版本
