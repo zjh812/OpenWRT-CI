@@ -39,19 +39,7 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
-# 其他现有插件克隆...
-git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 
-# ===== 添加 iStore 源 =====
-# 移除可能存在的旧配置（避免重复）
-sed -i '/istore/d' feeds.conf.default
-# 添加 iStore 源到 feeds 配置
-echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-# 更新 iStore 源
-./scripts/feeds update istore
-# 安装 iStore 核心包（默认集成到固件）
-./scripts/feeds install -d y -p istore luci-app-store
-# ===== iStore 配置结束 =====
 
 # 后续默认操作（更新所有 feeds 等）
 ./scripts/feeds update -a
